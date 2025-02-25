@@ -2,7 +2,7 @@
 
 The application is containerized using Docker, with services orchestrated via Docker Compose. This ensures consistent deployment across different environments.
 
-> **⚠️ Security Note**This configuration is designed for secure production deployment. It leverages Docker's internal networking which limits exposure by only selectively exposing required services. Monitoring is principally accessed via the Grafana dashboard, ensuring that internal components remain protected while still providing full observability.
+>This configuration is designed for secure production deployment. It leverages Docker's internal networking which limits exposure by only selectively exposing required services. Monitoring is principally accessed via the Grafana dashboard, ensuring that internal components remain protected while still providing full observability.
 
 ## Components
 
