@@ -2,26 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const winston = require("winston");
 const promClient = require("prom-client");
+const logger = require("./logger");
 
 // Create Express app
 const app = express();
 const port = process.env.PORT || 3000;
-
-// Setup Winston logger
-const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
-    new winston.transports.File({ filename: "logs/combined.log" }),
-  ],
-});
 
 // Prometheus metrics
 const collectDefaultMetrics = promClient.collectDefaultMetrics;
@@ -60,7 +46,13 @@ app.use((req, res, next) => {
 
     httpRequestCounter.labels(req.method, path, res.statusCode).inc();
 
-    logger.info(`${req.method} ${req.url} ${res.statusCode} - ${duration}ms`);
+    logger.info(`${req.method} ${req.url} ${res.statusCode} - ${duration}ms`, {
+      method: req.method,
+      url: req.url,
+      status: res.statusCode,
+      duration: duration,
+      path: path,
+    });
   });
 
   next();
