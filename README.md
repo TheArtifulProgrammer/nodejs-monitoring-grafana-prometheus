@@ -1,29 +1,42 @@
 # NodeJS Application Monitoring with Prometheus and Grafana
 
-A comprehensive Node.js application demonstrating monitoring and observability using Prometheus and Grafana.
+The application is containerized using Docker, with services orchestrated via Docker Compose. This ensures consistent deployment across different environments.
 
-## Overview
+## Components
 
-This project showcases how to implement monitoring in a Node.js application using industry-standard tools. It provides real-time metrics, visualization, and alerting capabilities.
+### Backend (Express.js)
 
-## Features
+- RESTful API service built with Express.js
+- MongoDB integration for data persistence
+- Prometheus metrics instrumentation
+- Structured logging with Winston
 
-- Node.js REST API with built-in metrics
-- Prometheus metrics integration
-- Grafana dashboards for visualization
-- Docker containerization
-- Performance monitoring
-- Request/Response metrics
-- Error tracking
-- Resource utilization metrics
+### Frontend (React)
 
-## Prerequisites
+- User interface built with React
+- Axios for API communication
+- Served via Nginx
+
+### Database (MongoDB)
+
+- NoSQL database for storing application data
+- Initial data seeding through init script
+
+### Monitoring Stack
+
+- **Prometheus**: Metrics collection and storage
+- **Grafana**: Visualization and dashboarding
+- **Loki**: Log aggregation and storage
+- **Promtail**: Log collection agent
+- **cAdvisor**: Container metrics collection
+- **Node Exporter**: Host system metrics collection
+
+## Getting Started
+
+### Prerequisites
 
 - Docker and Docker Compose
-- Node.js 14.x or higher
-- npm or yarn package manager
-
-## Quick Start
+- Git
 
 1. Clone the repository
 
