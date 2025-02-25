@@ -2,7 +2,7 @@
 
 The application is containerized using Docker, with services orchestrated via Docker Compose. This ensures consistent deployment across different environments.
 
-> **Security Note:** This approach should be used only in development mode. For production, please use the implementation in the [master-prod branch](https://github.com/TheArtifulProgrammer/nodejs-monitoring-grafana-prometheus/tree/master-prod).
+> **⚠️Security Note:** This approach should be used only in development mode. For production, please use the implementation in the [master-prod branch](https://github.com/TheArtifulProgrammer/nodejs-monitoring-grafana-prometheus/tree/master-prod).
 
 ## Components
 
