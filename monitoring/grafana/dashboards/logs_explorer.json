@@ -135,7 +135,7 @@
       },
       "targets": [
         {
-          "expr": "{container=~\"$container\"} |~ \"$search\"",
+          "expr": "{container=~\"$container\"} |~ \"(?i)${search:pipe>.+}\"",
           "refId": "A"
         }
       ],
@@ -150,7 +150,7 @@
   "templating": {
     "list": [
       {
-        "allValue": ".*",
+        "allValue": ".+",
         "current": {
           "selected": false,
           "text": "All",
@@ -180,8 +180,8 @@
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": ".+",
+          "value": ".+"
         },
         "description": null,
         "error": null,
@@ -191,11 +191,11 @@
         "options": [
           {
             "selected": true,
-            "text": "",
-            "value": ""
+            "text": ".+",
+            "value": ".+"
           }
         ],
-        "query": "",
+        "query": ".+",
         "skipUrlSync": false,
         "type": "textbox"
       }

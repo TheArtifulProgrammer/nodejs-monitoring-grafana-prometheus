@@ -139,16 +139,14 @@ services:
   # Loki for log aggregation
   loki:
     image: grafana/loki:2.9.1
+    container_name: loki
     volumes:
       - ./monitoring/loki/config.yml:/etc/loki/config.yml:ro
-      - ./monitoring/loki/data:/loki
-      - ./monitoring/loki/rules:/loki/rules
-      - ./monitoring/loki/wal:/loki/wal
+      - loki_data:/loki
     command:
       - --config.file=/etc/loki/config.yml
     ports:
       - "3100:3100"
-    user: "0" 
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -162,17 +160,20 @@ services:
     container_name: promtail
     volumes:
       - ./monitoring/promtail:/etc/promtail
-      - /var/log:/var/log
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro  # Add proper socket mount
     command: -config.file=/etc/promtail/promtail-config.yml
     depends_on:
       - loki
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   mongodb_data:
   prometheus_data:
   grafana_data:
   loki_data:
-  loki_wal:
