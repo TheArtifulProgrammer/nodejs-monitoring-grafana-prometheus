@@ -57,7 +57,7 @@ npm install
 docker-compose up -d
 ```
 
-## Security Note
+## ⚠️ Security Note
 
 This configuration is designed for secure production deployment. It leverages Docker's internal networking which limits exposure by only selectively exposing required services. Monitoring is principally accessed via the Grafana dashboard, ensuring that internal components remain protected while still providing full observability.
 
