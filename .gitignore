@@ -1,0 +1,3 @@
+monitoring/loki/data/
+monitoring/loki/rules/
+monitoring/loki/wal
