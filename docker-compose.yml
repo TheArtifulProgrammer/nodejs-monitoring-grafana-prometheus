@@ -30,6 +30,7 @@ services:
     restart: unless-stopped
     networks:
       - public
+      - internal
     logging:
       driver: "json-file"
       options:
